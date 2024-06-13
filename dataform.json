@@ -1,7 +1,0 @@
-{
-  "assertionSchema": "dataform_assertions",
-  "defaultSchema": "dataform",
-  "warehouse": "bigquery",
-  "defaultDatabase": "gcp-labs-379721",
-  "defaultLocation": "southamerica-east1"  
-}
