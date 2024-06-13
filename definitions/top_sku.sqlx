@@ -12,6 +12,6 @@ SELECT
   sum(quantity) quantity,
   sum(total_amount) total_amount
 FROM
-  `${ref('trusted_labs.order_details')}`
+  ${ref('order_details')}
 group by 1
 order by 4 desc 

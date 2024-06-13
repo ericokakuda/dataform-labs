@@ -16,12 +16,12 @@ SELECT
   o.quantity,
   (o.quantity * s.price) AS total_amount
 FROM
-  `${ref('raw_labs.orders')}` AS o
+  raw_labs.orders AS o
 JOIN
-  `${ref('raw_labs.customers')}` AS c
+  raw_labs.customers AS c
 ON
   o.customer_id = c.customer_id
 JOIN
-  `${ref('raw_labs.skus')}` AS s
+  raw_labs.skus AS s
 ON
   o.sku = s.sku
