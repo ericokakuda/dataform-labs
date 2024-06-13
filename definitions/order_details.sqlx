@@ -1,0 +1,27 @@
+config {
+  type: "table",
+  schema: "trusted_labs",
+  name: "order_details",
+  description: "Tabela que contém detalhes dos pedidos com informações de clientes e SKUs, atualizada a partir dos dados brutos no dataset raw_labs."
+}
+
+-- Criação da tabela order_details com dados combinados de orders, customers e skus do dataset raw_labs
+SELECT
+  o.order_id,
+  o.order_date,
+  c.name AS customer_name,
+  c.email AS customer_email,
+  s.name AS product_name,
+  s.price AS product_price,
+  o.quantity,
+  (o.quantity * s.price) AS total_amount
+FROM
+  `${ref('raw_labs.orders')}` AS o
+JOIN
+  `${ref('raw_labs.customers')}` AS c
+ON
+  o.customer_id = c.customer_id
+JOIN
+  `${ref('raw_labs.skus')}` AS s
+ON
+  o.sku = s.sku
